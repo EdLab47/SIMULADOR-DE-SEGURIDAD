@@ -1,0 +1,5 @@
+{
+  "name": "Sistema de Acceso con Clave",
+  "description": "Simulador de seguridad industrial de 4 etapas donde el usuario debe identificarse e ingresar una clave.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,7 @@
+export enum ScreenState {
+  INSTRUCTIONS = 'INSTRUCTIONS',
+  COVER = 'COVER',
+  PANEL = 'PANEL',
+  SUCCESS = 'SUCCESS',
+  ERROR = 'ERROR'
+}
