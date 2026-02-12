@@ -18,7 +18,7 @@ const App: React.FC = () => {
   return (
     // We adjust the main container class based on whether we are showing the instructions (scrolling allowed) 
     // or the simulator (full screen kiosk mode)
-    <main className={isSimulator ? "h-screen w-screen overflow-hidden select-none font-sans bg-gray-100" : "bg-white"}>
+    <main className={isSimulator ? "h-screen w-screen overflow-hidden select-none font-sans bg-gray-100 relative" : "bg-white"}>
       {currentScreen === ScreenState.INSTRUCTIONS && (
         <InstructionsScreen onStartDemo={() => navigateTo(ScreenState.COVER)} />
       )}
@@ -42,8 +42,17 @@ const App: React.FC = () => {
         <ErrorScreen onRetry={() => navigateTo(ScreenState.PANEL)} />
       )}
       
-      {/* Optional: Add a hidden way to go back to instructions from cover if needed, 
-          but for Kiosk feel we usually don't. The user can refresh the page to see instructions again. */}
+      {/* Botón flotante para regresar a instrucciones */}
+      {isSimulator && (
+        <button
+          onClick={() => navigateTo(ScreenState.INSTRUCTIONS)}
+          className="absolute top-4 right-4 z-50 bg-white/90 hover:bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-bold shadow-lg transition-all border border-gray-200 hover:scale-105 active:scale-95 flex items-center gap-2"
+          title="Salir de la demostración y ver instrucciones"
+        >
+          <i className="fas fa-book-open"></i>
+          <span>Instrucciones</span>
+        </button>
+      )}
     </main>
   );
 };
